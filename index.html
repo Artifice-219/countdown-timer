@@ -1,23 +1,113 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Countdown Timer</h1>
-    <main>
-        <div class="timer-wrapper">
-            <div class="timer">
-                <div class="hour">00</div>
-                <div class="minutes">00</div>
-                <div class="seconds">00</div>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="timer-wrapper">
+      <h1>Countdown Timer</h1>
+      <div class="timer">
+        <div class="hour" id="main-hour">00</div>
+        <div class="minutes" id="main-min">00</div>
+        <div class="seconds" id="main-sec">00</div>
+      </div>
+      <div class="timer-control">
+        <div class="timer">
+          <div class="hour">
+            <div class="value" id="control-hr">00</div>
+            <div class="control">
+              <button class="up" id="hr-up">+</button>
+              <button class="down" id="hr-down">-</button>
             </div>
+          </div>
+          <div class="minutes">
+            <div class="value" id="control-min">00</div>
+            <div class="control">
+              <button class="up" id="min-up">+</button>
+              <button class="down" id="min-down">-</button>
+            </div>
+          </div>
+          <div class="seconds">
+            <div class="value" id="control-sec">00</div>
+            <div class="control">
+              <button class="up" id="sec-up">+</button>
+              <button class="down" id="sec-down">-</button>
+            </div>
+          </div>
         </div>
+        <div class="timer-actions">
+          <button class="start">Start</button>
+          <button class="pause">Pause</button>
+          <button class="restart">Restart</button>
+        </div>
+      </div>
+    </div>
 
-        <div>
-            asldfdla
-        </div>
-    </main>
-</body>
+    <script>
+      $(document).ready(function () {
+        let hour = $("#main-hour");
+        let minutes = $("#main-min");
+        let seconds = $("#main-sec");
+
+        let control_hr = $("#control-hr");
+        let control_min = $("#control-min");
+        let control_sec = $("#control-sec");
+
+        // jquery for the hour's increment button
+        $("#hr-up").click(function () {
+          let currentHour = parseInt(hour.text());
+          currentHour++;
+          hour.text(currentHour.toString().padStart(2, "0"));
+          control_hr.text(currentHour.toString().padStart(2, "0"));
+        });
+
+        // jquery for hour's decrement button
+        $("#hr-down").click(function () {
+          let currentHour = parseInt(hour.text());
+          currentHour--;
+          hour.text(currentHour.toString().padStart(2, "0"));
+          control_hr.text(currentHour.toString().padStart(2, "0"));
+        });
+
+        // jquery for the minutes's increment button
+        $("#min-up").click(function () {
+          let current_minutes = parseInt(minutes.text());
+          current_minutes++;
+          minutes.text(current_minutes.toString().padStart(2, "0"));
+          control_min.text(current_minutes.toString().padStart(2, "0"));
+        });
+
+        // jquery for minutes's decrement button
+        $("#min-down").click(function () {
+          let current_minutes = parseInt(minutes.text());
+          current_minutes--;
+          minutes.text(current_minutes.toString().padStart(2, "0"));
+          control_min.text(current_minutes.toString().padStart(2, "0"));
+        });
+
+        // jqeuery for the second's increment buttons
+        $("#sec-up").click(function () {
+          let current_seconds = parseInt(seconds.text());
+          current_seconds++;
+          seconds.text(current_seconds.toString().padStart(2, "0"));
+          control_sec.text(current_seconds.toString().padStart(2, "0"));
+        });
+
+        // jquery for the second's decrement button
+        $("#sec-down").click(function () {
+          let current_seconds = parseInt(seconds.text());
+          current_seconds--;
+          seconds.text(current_seconds.toString().padStart(2, "0"));
+          control_sec.text(current_seconds.toString().padStart(2, "0"));
+        });
+      });
+    </script>
+  </body>
 </html>
