@@ -4,6 +4,9 @@ body{
     background-color: #EFF1F3;
 }
 
+.timer-wrapper{
+    width:  70%;
+}
 .timer-wrapper > .timer{
     display: flex;
     justify-content: center;
@@ -16,28 +19,28 @@ body{
 }
 
 .timer-wrapper > .timer > .hour{
-    width: 75px;
-    height: 75px;
+    width: 15%;
+    height: 75%;
     border-radius: 4%;
     background-color: #D8B4A0;
 }
 
 .timer-wrapper > .timer > .minutes{
-    width: 75px;
-    height: 75px;
+    width: 15%;
+    height: 75%;
     border-radius: 4%;
     background-color: #D8B4A0;
 }
 
 .timer-wrapper > .timer > .seconds{
-    width: 75px;
-    height: 75px;
+    width: 15%;
+    height: 75%;
     border-radius: 4%;
     background-color: #D8B4A0;
 }
 
 .timer-control{
-    background-color: #DBD3D8;
+   background-color: #DBD3D8;
 }
 
 .timer{
@@ -72,4 +75,15 @@ body{
     position: relative;
     left: 13%;
     padding: 10px;
+}
+
+.finished-notif{
+    position: relative;
+    right: 10%;
+    z-index: 1;
+    display: none;
+    height: 25%;
+    width: 30%;
+    border-radius: 4%;
+    background-color: #D77A61;
 }

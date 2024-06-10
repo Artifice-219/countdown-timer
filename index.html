@@ -45,9 +45,13 @@
         <div class="timer-actions">
           <button class="start">Start</button>
           <button class="pause">Pause</button>
-          <button class="restart">Restart</button>
+          <button class="stop">Stop</button>
         </div>
       </div>
+    </div>
+
+    <div class="finished-notif">
+        <p>Timer Done !!!</p>
     </div>
 
     <script>
@@ -72,6 +76,10 @@
         $("#hr-down").click(function () {
           let currentHour = parseInt(hour.text());
           currentHour--;
+
+          if (currentHour < 0) {
+            currentHour = 0;
+          }
           hour.text(currentHour.toString().padStart(2, "0"));
           control_hr.text(currentHour.toString().padStart(2, "0"));
         });
@@ -88,6 +96,10 @@
         $("#min-down").click(function () {
           let current_minutes = parseInt(minutes.text());
           current_minutes--;
+
+          if (current_minutes < 0) {
+            current_minutes = 0;
+          }
           minutes.text(current_minutes.toString().padStart(2, "0"));
           control_min.text(current_minutes.toString().padStart(2, "0"));
         });
@@ -104,8 +116,84 @@
         $("#sec-down").click(function () {
           let current_seconds = parseInt(seconds.text());
           current_seconds--;
+
+          if (current_seconds < 0) {
+            current_seconds = 0;
+          }
           seconds.text(current_seconds.toString().padStart(2, "0"));
           control_sec.text(current_seconds.toString().padStart(2, "0"));
+        });
+      });
+    </script>
+
+    <!-- jquery for the timer control buttons -->
+    <script>
+      $(document).ready(function () {
+        let hour = $("#main-hour");
+        let minutes = $("#main-min");
+        let seconds = $("#main-sec");
+        let intervalId; // Variable to hold the interval ID
+
+        $(".start").click(function () {
+          let current_hour = parseInt(hour.text());
+          let cuurent_min = parseInt(minutes.text());
+          let current_seconds = parseInt(seconds.text());
+
+          // Start the countdown using setInterval()
+          intervalId = setInterval(function () {
+            current_seconds--; // Decrement the seconds
+            seconds.text(current_seconds.toString().padStart(2, "0")); // Update the displayed value
+            minutes.text(cuurent_min.toString().padStart(2, "0"));
+            hour.text(current_hour.toString().padStart(2, "0"));
+
+            // decrementing the seconds
+            if (current_seconds <= 0) {
+              //decrement the minutes
+              cuurent_min--;
+              // seconds go back to 60
+              current_seconds = 59;
+
+              // decrementing the hour
+              if (cuurent_min <= 0) {
+                current_hour--;
+                // minutes go back to 60
+                cuurent_min = 59;
+              }
+            }
+
+            if (
+              current_seconds == 0 &&
+              current_minutes == 0 &&
+              current_hour == 0
+            ) {
+              clearInterval(intervalId); // Stop the countdown
+            }
+          }, 1000);
+        });
+
+        $(".pause").click(function () {
+          let current_hour = parseInt(hour.text());
+          let cuurent_min = parseInt(minutes.text());
+          let current_seconds = parseInt(seconds.text());
+
+          seconds.text(current_seconds.toString().padStart(2, "0")); // Update the displayed value
+          minutes.text(cuurent_min.toString().padStart(2, "0"));
+          hour.text(current_hour.toString().padStart(2, "0"));
+
+          clearInterval(intervalId); // Stop the countdown
+        });
+
+        $(".stop").click(function () {
+          let current_hour = 0;
+          let cuurent_min = 0;
+          let current_seconds = 0;
+
+          seconds.text(current_seconds.toString().padStart(2, "0")); // Update the displayed value
+          minutes.text(cuurent_min.toString().padStart(2, "0"));
+          hour.text(current_hour.toString().padStart(2, "0"));
+
+          clearInterval(intervalId); // Stop the countdown
+          $('.finished-notif').css("display", "block");
         });
       });
     </script>
