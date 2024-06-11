@@ -1,89 +1,158 @@
-body{
-    display: flex;
-    justify-content: center;
-    background-color: #EFF1F3;
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eff1f3;
 }
 
-.timer-wrapper{
-    width:  70%;
+.timer-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 50%;
 }
-.timer-wrapper > .timer{
+.timer-wrapper > .timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 6px;
+  gap: 4px;
+  width: 85%;
+  height: 85%;
+  background-color: #DBD3D8;
+}
+
+.timer-wrapper > .timer > .hour {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 75%;
+  border-radius: 4%;
+  font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  font-size: 500%;
+  background-color: #d8b4a0;
+}
+
+.timer-wrapper > .timer > .minutes {
     display: flex;
-    justify-content: center;
+  align-items: center;
+  justify-content: center;
+  font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  font-size: 500%;
+  width: 40%;
+  height: 75%;
+  border-radius: 4%;
+  background-color: #d8b4a0;
+}
+
+.timer-wrapper > .timer > .seconds {
+    display: flex;
     align-items: center;
-    border-radius: 6px;
-    gap: 4px;
-    width: 100%;
-    height: 25%;
-    background-color: #DBD3D8;
-}
-
-.timer-wrapper > .timer > .hour{
-    width: 15%;
-    height: 75%;
-    border-radius: 4%;
-    background-color: #D8B4A0;
-}
-
-.timer-wrapper > .timer > .minutes{
-    width: 15%;
-    height: 75%;
-    border-radius: 4%;
-    background-color: #D8B4A0;
-}
-
-.timer-wrapper > .timer > .seconds{
-    width: 15%;
-    height: 75%;
-    border-radius: 4%;
-    background-color: #D8B4A0;
-}
-
-.timer-control{
-   background-color: #DBD3D8;
-}
-
-.timer{
-    display: flex;
     justify-content: center;
+    font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    font-size: 500%;
+  right: 120%;
+  width: 40%;
+  height: 75%;
+  border-radius: 4%;
+  background-color: #d8b4a0;
+}
+
+.timer-control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+  width: 50%;
+  background-color: #dbd3d8;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  gap: 1%;
+}
+
+.timer-control > .timer > .hour {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  font-size: 500%;
+  width: 20%;
+  height: 75%;
+  border-radius: 4%;
+  background-color: #d8b4a0;
+}
+
+.timer-control > .timer > .minutes {
+    display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: center;
+    font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    font-size: 500%;
+  width: 20%;
+  height: 75%;
+  border-radius: 4%;
+  background-color: #d8b4a0;
 }
 
-.timer-control > .timer > .hour{
-    width: 75px;
-    height: 75px;
-    border-radius: 4%;
-    background-color: #D8B4A0;
+.timer-control > .timer > .seconds {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    font-size: 500%;
+  width: 20%;
+  height: 75%;
+  border-radius: 4%;
+  background-color: #d8b4a0;
 }
 
-.timer-control > .timer > .minutes{
-    width: 75px;
-    height: 75px;
-    border-radius: 4%;
-    background-color: #D8B4A0;
+.timer-actions {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 15%;
+  left: 33%;
+  padding: 2%;
+  width: fit-content;
 }
 
-.timer-control > .timer > .seconds{
-    width: 75px;
-    height: 75px;
-    border-radius: 4%;
-    background-color: #D8B4A0;
-}
-
-.timer-actions{
-    position: relative;
-    left: 13%;
-    padding: 10px;
-}
-
-.finished-notif{
-    position: relative;
-    right: 10%;
-    z-index: 1;
-    display: none;
-    height: 25%;
-    width: 30%;
-    border-radius: 4%;
+.timer-actions > .start{
+    height: 60%;
+    width: 40%;
+    margin-right: 2%;
     background-color: #D77A61;
+}
+
+.timer-actions > .pause{
+    height: 60%;
+    width: 40%;
+    margin-right: 2%;
+    background-color:  #D77A61;
+}
+
+.timer-actions > .stop{
+    height: 60%;
+    width: 40%;
+    background-color: #D77A61;
+}
+
+.finished-notif {
+  position: relative;
+  right: 10%;
+  z-index: 1;
+  display: none;
+  height: 25%;
+  width: 30%;
+  border-radius: 4%;
+  background-color: #d77a61;
 }
