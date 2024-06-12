@@ -12,45 +12,45 @@
   </head>
   <body>
     <div class="timer-wrapper">
-      <div class="timer">
+      <div class="timer" id="timer-display">
         <div class="hour" id="main-hour">00</div>
         <div class="minutes" id="main-min">00</div>
         <div class="seconds" id="main-sec">00</div>
+      </div>
+    </div>
+    <div class="timer-control">
+      <div class="timer">
+        <div class="hour">
+          <div class="value" id="control-hr">00</div>
+          <div class="control">
+            <button class="up" id="hr-up">+</button>
+            <button class="down" id="hr-down">-</button>
+          </div>
+        </div>
+        <div class="minutes">
+          <div class="value" id="control-min">00</div>
+          <div class="control">
+            <button class="up" id="min-up">+</button>
+            <button class="down" id="min-down">-</button>
+          </div>
+        </div>
+        <div class="seconds">
+          <div class="value" id="control-sec">00</div>
+          <div class="control">
+            <button class="up" id="sec-up">+</button>
+            <button class="down" id="sec-down">-</button>
+          </div>
         </div>
       </div>
-      <div class="timer-control">
-        <div class="timer">
-          <div class="hour">
-            <div class="value" id="control-hr">00</div>
-            <div class="control">
-              <button class="up" id="hr-up">+</button>
-              <button class="down" id="hr-down">-</button>
-            </div>
-          </div>
-          <div class="minutes">
-            <div class="value" id="control-min">00</div>
-            <div class="control">
-              <button class="up" id="min-up">+</button>
-              <button class="down" id="min-down">-</button>
-            </div>
-          </div>
-          <div class="seconds">
-            <div class="value" id="control-sec">00</div>
-            <div class="control">
-              <button class="up" id="sec-up">+</button>
-              <button class="down" id="sec-down">-</button>
-            </div>
-          </div>
-        </div>
-        <div class="timer-actions">
-          <button class="start">Start</button>
-          <button class="pause">Pause</button>
-          <button class="stop">Stop</button>
-        </div>
+      <div class="timer-actions">
+        <button class="start">Start</button>
+        <button class="pause">Pause</button>
+        <button class="stop">Stop</button>
+      </div>
     </div>
 
     <div class="finished-notif">
-        <p>Timer Done !!!</p>
+      <p>Timer Done !!!</p>
     </div>
 
     <script>
@@ -67,6 +67,12 @@
         $("#hr-up").click(function () {
           let currentHour = parseInt(hour.text());
           currentHour++;
+
+          // makign sure that 59 would be the max number
+          if (currentHour > 59) {
+            currentHour = 59;
+          }
+
           hour.text(currentHour.toString().padStart(2, "0"));
           control_hr.text(currentHour.toString().padStart(2, "0"));
         });
@@ -87,6 +93,12 @@
         $("#min-up").click(function () {
           let current_minutes = parseInt(minutes.text());
           current_minutes++;
+
+          // makign sure that 59 would be the max number
+          if (current_minutes > 59) {
+            current_minutes = 59;
+          }
+
           minutes.text(current_minutes.toString().padStart(2, "0"));
           control_min.text(current_minutes.toString().padStart(2, "0"));
         });
@@ -107,6 +119,11 @@
         $("#sec-up").click(function () {
           let current_seconds = parseInt(seconds.text());
           current_seconds++;
+
+          // makign sure that 59 would be the max number
+          if (current_seconds > 59) {
+            current_seconds = 59;
+          }
           seconds.text(current_seconds.toString().padStart(2, "0"));
           control_sec.text(current_seconds.toString().padStart(2, "0"));
         });
@@ -138,36 +155,66 @@
           let cuurent_min = parseInt(minutes.text());
           let current_seconds = parseInt(seconds.text());
 
-          // Start the countdown using setInterval()
-          intervalId = setInterval(function () {
-            current_seconds--; // Decrement the seconds
-            seconds.text(current_seconds.toString().padStart(2, "0")); // Update the displayed value
-            minutes.text(cuurent_min.toString().padStart(2, "0"));
-            hour.text(current_hour.toString().padStart(2, "0"));
+          // making sure that the timer wont be started if all values are 0
 
-            // decrementing the seconds
-            if (current_seconds <= 0) {
-              //decrement the minutes
-              cuurent_min--;
-              // seconds go back to 60
-              current_seconds = 59;
+          if (current_hour == 0 && cuurent_min == 0 && current_seconds == 0) {
+            alert("Please set the timer before starting");
+          } else {
+            // add a css styling to the whenever the timer starts
+            $("#timer-display").css({
+              "border-radius": "5px",
+              "background-color": "#DBD3D8",
+              border: "6px dashed #E9328D",
+            });
 
-              // decrementing the hour
-              if (cuurent_min <= 0) {
-                current_hour--;
-                // minutes go back to 60
-                cuurent_min = 59;
+            // Start the countdown using setInterval()
+            intervalId = setInterval(function () {
+
+              seconds.text(current_seconds.toString().padStart(2, "0")); // Update the displayed value
+              minutes.text(cuurent_min.toString().padStart(2, "0"));
+              hour.text(current_hour.toString().padStart(2, "0"));
+
+              //decrementing the seconds
+              current_seconds--; // Decrement the seconds
+              // decrement the minutes
+              // decrementing the seconds
+              if (current_seconds <= 0 && cuurent_min > 0) {
+                //decrement the minutes
+                cuurent_min--;
+                // seconds go back to 60
+                current_seconds = 59;
+
+                // decrementing the hour
+                if (cuurent_min <= 0 && current_hour > 0) {
+                  current_hour--;
+                  // minutes go back to 60
+                  cuurent_min = 59;
+                }
               }
-            }
 
-            if (
-              current_seconds == 0 &&
-              current_minutes == 0 &&
-              current_hour == 0
-            ) {
-              clearInterval(intervalId); // Stop the countdown
-            }
-          }, 1000);
+              if (current_hour < 0) {
+                current_hour = 0;
+              }
+
+              if(cuurent_min < 0){
+                cuurent_min = 0;
+              }
+              if(current_seconds < 0){
+                current_seconds = 0;
+              }
+
+              if (
+                current_seconds == 0 &&
+                current_minutes == 0 &&
+                current_hour == 0
+              ) {
+                clearInterval(intervalId); // Stop the countdown
+                // displaying the stop pop-up
+                $(".finished-notif").css("display", "block");
+              }
+              // 
+            }, 100);
+          }
         });
 
         $(".pause").click(function () {
@@ -179,6 +226,13 @@
           minutes.text(cuurent_min.toString().padStart(2, "0"));
           hour.text(current_hour.toString().padStart(2, "0"));
 
+          // add a custom css when the timer is paused
+          $("#timer-display").css({
+            "border-radius": "5px",
+            "background-color": "#DBD3D8",
+            border: "6px dashed #E7DF19",
+          });
+
           clearInterval(intervalId); // Stop the countdown
         });
 
@@ -187,12 +241,19 @@
           let cuurent_min = 0;
           let current_seconds = 0;
 
+          // display all custom css when timer stop
+          $("#timer-display").css({
+            "border-radius": "none",
+            "background-color": "#DBD3D8",
+            'border': "none",
+          });
+
           seconds.text(current_seconds.toString().padStart(2, "0")); // Update the displayed value
           minutes.text(cuurent_min.toString().padStart(2, "0"));
           hour.text(current_hour.toString().padStart(2, "0"));
 
           clearInterval(intervalId); // Stop the countdown
-          $('.finished-notif').css("display", "block");
+          $(".finished-notif").css("display", "block");
         });
       });
     </script>

@@ -17,11 +17,13 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  border-radius: 6px;
-  gap: 4px;
-  width: 85%;
+  border-bottom-left-radius: none;
+  gap: 10px;
+  width: 86%;
   height: 85%;
-  background-color: #DBD3D8;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  background-color: #dbd3d8;
 }
 
 .timer-wrapper > .timer > .hour {
@@ -31,16 +33,19 @@ body {
   width: 40%;
   height: 75%;
   border-radius: 4%;
-  font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  margin-left: 4%;
+  font-family: "Courier New", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
   font-size: 500%;
   background-color: #d8b4a0;
 }
 
 .timer-wrapper > .timer > .minutes {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  font-family: "Courier New", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
   font-size: 500%;
   width: 40%;
   height: 75%;
@@ -49,24 +54,30 @@ body {
 }
 
 .timer-wrapper > .timer > .seconds {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-    font-size: 500%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
+  font-size: 500%;
   right: 120%;
   width: 40%;
   height: 75%;
   border-radius: 4%;
+  margin-right: 4%;
   background-color: #d8b4a0;
 }
 
 .timer-control {
+  position: relative;
+  bottom: 4%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 50%;
-  width: 50%;
+  width: 43%;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
   background-color: #dbd3d8;
 }
 
@@ -83,7 +94,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  font-family: "Courier New", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
   font-size: 500%;
   width: 20%;
   height: 75%;
@@ -92,11 +104,12 @@ body {
 }
 
 .timer-control > .timer > .minutes {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-    font-size: 500%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
+  font-size: 500%;
   width: 20%;
   height: 75%;
   border-radius: 4%;
@@ -104,11 +117,12 @@ body {
 }
 
 .timer-control > .timer > .seconds {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family:'Courier New', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-    font-size: 500%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+    Arial, sans-serif;
+  font-size: 500%;
   width: 20%;
   height: 75%;
   border-radius: 4%;
@@ -126,33 +140,124 @@ body {
   width: fit-content;
 }
 
-.timer-actions > .start{
-    height: 60%;
+.timer-actions > .start {
+  appearance: button;
+  background-color: #1899d6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
+  /* height: 60%;
     width: 40%;
     margin-right: 2%;
-    background-color: #D77A61;
+    background-color: #D77A61; */
 }
 
-.timer-actions > .pause{
-    height: 60%;
-    width: 40%;
-    margin-right: 2%;
-    background-color:  #D77A61;
+.timer-actions > .pause {
+  appearance: button;
+  background-color: #1899d6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
 }
 
-.timer-actions > .stop{
-    height: 60%;
-    width: 40%;
-    background-color: #D77A61;
+.timer-actions > .stop {
+  appearance: button;
+  background-color: #1899d6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .finished-notif {
   position: relative;
-  right: 10%;
+  display: flex;
+  align-content: center;
+  bottom: 90%;
+  left: 0%;
   z-index: 1;
   display: none;
-  height: 25%;
-  width: 30%;
+  height: 31%;
+  width: 40%;
   border-radius: 4%;
   background-color: #d77a61;
+}
+
+.finished-notif > p{
+  position: relative;
+  left:5%;
+  font-family: "Courier New", "Helvetica Neue", "Arial Nova", "Nimbus Sans",
+  Arial, sans-serif;
+  font-size: 300%;
+  font-weight:bold;
+  color : #FFF5EA;
+
 }
