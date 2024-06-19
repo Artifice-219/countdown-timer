@@ -103,3 +103,114 @@
     }
 }
 
+/* Targeting average laptop screens */
+@media (min-width: 1000px) and (max-width: 1920px) {
+  /* Styles for laptops */
+
+  /* Base Styles (for Desktop) */
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 5rem;
+  white-space: nowrap;
+  margin: 2px;
+}
+
+h2 {
+  position: absolute;
+  top: 20px;
+  left: 70%;
+  font-size: 4rem;
+  white-space: nowrap;
+  color: black;
+  text-shadow: 
+    -1px -1px 0 #fff,  
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff,
+    -2px -2px 0 #fff,  
+     2px -2px 0 #fff,
+    -2px  2px 0 #fff,
+     2px  2px 0 #fff;
+}
+
+.timer-wrapper {
+  position: relative;
+  left: 15%;
+  top: 10%;
+  width: fit-content;
+  height: fit-content;
+  padding: 2px;
+  font-size: 8rem;
+  margin-left: 15px;
+}
+
+.timer-wrapper > .timer {
+  display: flex;
+  gap: 20px;
+  font-size: 15rem;
+}
+
+.timer-wrapper > .timer > .hour,
+.timer-wrapper > .timer > .minutes {
+  border-right: 1px solid red;
+}
+
+.timer-control {
+  position: relative;
+  left: 40%;
+  top: 12%;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 5px;
+}
+
+.timer-control > .timer {
+  display: flex;
+  color: red;
+  font-size: 2.5rem;
+}
+
+.control button {
+  position: relative;
+  right: 43px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  color: red;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.timer-actions {
+  width: fit-content;
+}
+
+.timer-actions button {
+  position: relative;
+  left: 30%;
+  height: 50px;
+  width: 50px;
+  border-radius: 30%;
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.finished-notif {
+  display: none;
+}
+
+
+}
