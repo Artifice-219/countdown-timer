@@ -70,6 +70,7 @@
     }
 
 
+
     .timer-control > .timer{
       display: flex;
       font-family: Arial, Helvetica, sans-serif;
@@ -100,7 +101,26 @@
 
     .finished-notif{
       display: none;
+      position: absolute;
+      height: 80%;
+      width: 90%;
+      top: 45px;
+      background-color: white;
+      color: black;
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 10px;
+      border-radius: 25px;
     }
+
+    .time-label{
+
+      position: relative;
+      left: 50px;
+      color: violet;
+      font-size: 2rem;
+  
+  }
 }
 
 /* Targeting average laptop screens */
@@ -206,10 +226,38 @@ h2 {
   text-align: center;
   font-weight: bold;
   font-size: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+button:active{
+
+  transform: scale(0.95);
+  box-shadow: 0 3px, 6px rgba(0,0,0,0.3);
 }
 
 .finished-notif {
   display: none;
+  position: absolute;
+  height: 80%;
+  width: 90%;
+  top: 45px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 10px;
+  border-radius: 25px;
+}
+
+.time-label{
+
+    position: relative;
+    left: 100px;
+    color: violet;
+    font-size: 4rem;
+
 }
 
 

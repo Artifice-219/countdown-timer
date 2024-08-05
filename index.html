@@ -15,9 +15,15 @@
     <h2>Timer</h2>
     <div class="timer-wrapper">
       <div class="timer" id="timer-display">
-        <div class="hour" id="main-hour">00</div>
-        <div class="minutes" id="main-min">00</div>
-        <div class="seconds" id="main-sec">00</div>
+        <div class="hour" id="main-hour">00
+          <div class="time-label">hr</div>
+        </div>
+        <div class="minutes" id="main-min">00
+          <div class="time-label">min</div>
+        </div>
+        <div class="seconds" id="main-sec">00
+          <div class="time-label">sec</div>
+        </div>
       </div>
     </div>
     <div class="timer-control">
@@ -52,7 +58,7 @@
     </div>
 
     <div class="finished-notif">
-      <p>Timer Done !!!</p>
+      <p>Times Up!</p>
     </div>
 
     <script>
@@ -204,7 +210,7 @@
 
               if (
                 current_seconds == 0 &&
-                current_minutes == 0 &&
+                cuurent_min == 0 &&
                 current_hour == 0
               ) {
                 clearInterval(intervalId); // Stop the countdown
